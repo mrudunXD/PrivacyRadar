@@ -1,25 +1,21 @@
-import { useState, useEffect } from 'react';
-
-export default function Navbar({ onScanClick, onExifClick, onPasswordClick, onLegalClick }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
-
+export default function Navbar({ onExifClick, onPasswordClick, onLegalClick, onScanClick }) {
   return (
-    <nav style={{ background: scrolled ? 'rgba(2,8,23,0.97)' : 'rgba(2,8,23,0.7)' }}>
-      <a href="/" className="logo">⬡ PRIVACY<span style={{ color: 'var(--text-primary)' }}>RADAR</span></a>
+    <nav>
+      {/* Logo */}
+      <a className="logo" onClick={onScanClick} style={{ cursor: 'pointer' }}>
+        <div className="logo-icon">🛡️</div>
+        <span className="logo-text">
+          PRIVACY<span>RADAR</span>
+        </span>
+      </a>
+
+      {/* Nav Links */}
       <div className="nav-links">
-        <a href="#features">Features</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onExifClick?.(); }}>EXIF Tool</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onPasswordClick?.(); }}>Password Check</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onLegalClick?.(); }}>Legal Letter</a>
-        <button className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px' }} onClick={onScanClick}>
-          Scan Now →
-        </button>
+        <a href="#features" className="hide-mobile" style={{ display: 'none' }}>Features</a>
+        <button className="nav-link-btn hide-mobile" onClick={onExifClick}>EXIF Tool</button>
+        <button className="nav-link-btn hide-mobile" onClick={onPasswordClick}>Password Check</button>
+        <button className="nav-link-btn hide-mobile" onClick={onLegalClick}>Legal Letter</button>
+        <button className="btn-primary nav-scan-btn" onClick={onScanClick}>Scan Now →</button>
       </div>
     </nav>
   );
