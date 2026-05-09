@@ -72,7 +72,9 @@ export default function LandingPage({ onScan }) {
           borderRadius: '6px', fontSize: '12px', fontWeight: '600',
           color: 'var(--blue)', letterSpacing: '0.3px',
         }}>
-          
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--green)', display: 'inline-block' }} />
+          Open-source
+        </div>
 
         <h1 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 700, marginBottom: '20px', color: 'var(--text)', lineHeight: 1.1 }}>
           Find out what the internet
